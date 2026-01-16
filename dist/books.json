@@ -1,0 +1,27 @@
+{
+    "categories": [
+        "전체 보기"
+    ],
+    "books": [
+        {
+            "path": "G:/내 드라이브/2025 전교인수련회기획안(2025 0805).pdf",
+            "title": "2025 전교인수련회기획안(2025 0805).pdf",
+            "cover": "covers\\2025 전교인수련회기획안(2025 0805).pdf_thumb.png",
+            "category": "전체 보기",
+            "last_page": 9,
+            "total_pages": 29,
+            "last_read": "2026-01-16T23:08:37.056090",
+            "favorite": false
+        },
+        {
+            "path": "G:/내 드라이브/한국밥상 배너 korean table.pdf",
+            "title": "한국밥상 배너 korean table.pdf",
+            "cover": "covers\\한국밥상 배너 korean table.pdf_thumb.png",
+            "category": "전체 보기",
+            "last_page": 0,
+            "total_pages": 1,
+            "last_read": "2026-01-16T23:00:02.222749",
+            "favorite": false
+        }
+    ]
+}
