@@ -50,13 +50,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Create Dummy Icon (if missing)
-      # build will fail if icon is missing and spec file expects it
-      run: |
-        if [ ! -f book.icns ]; then
-          touch book.icns
-          echo "Created dummy book.icns for build"
-        fi
+
 
     - name: Build with PyInstaller
       run: |
