@@ -1,0 +1,96 @@
+name: Build and Release MyPDF
+
+on:
+  push:
+    branches: [ "main" ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' # Stable version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Build with PyInstaller
+      # Using the script we created, but calling python directly to be safe in CI
+      run: |
+        python -m PyInstaller MyPDFLibrary.spec --clean --noconfirm
+
+    - name: Upload Windows Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MyPDFLibrary-Windows
+        path: dist/MyPDFLibrary.exe
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Create Dummy Icon (if missing)
+      # build will fail if icon is missing and spec file expects it
+      run: |
+        if [ ! -f book.icns ]; then
+          touch book.icns
+          echo "Created dummy book.icns for build"
+        fi
+
+    - name: Build with PyInstaller
+      run: |
+        python -m PyInstaller MyPDFLibrary_Mac.spec --clean --noconfirm
+
+    - name: Create Zip for Release
+      run: |
+        cd dist
+        zip -r MyPDFLibrary-Mac.zip MyPDFLibrary.app
+
+    - name: Upload Mac Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MyPDFLibrary-Mac
+        path: dist/MyPDFLibrary-Mac.zip
+
+  release:
+    needs: [build-windows, build-mac]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        merge-multiple: true # Download all artifacts to current dir
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          MyPDFLibrary.exe
+          MyPDFLibrary-Mac.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
