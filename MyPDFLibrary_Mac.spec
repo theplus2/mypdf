@@ -38,7 +38,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='book.ico', # Mac용 아이콘 (.icns 필요 -> Pillow가 자동 변환해줌)
+    icon='book.icns', # Mac용 아이콘 (변환된 파일 사용)
 )
 
 coll = COLLECT(
