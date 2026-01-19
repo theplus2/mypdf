@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Distribution / Build
+build/
+dist/
+*.spec
+!MyPDFLibrary.spec
+!MyPDFLibrary_Mac.spec
+
+# Installer
+*.exe
+*.pkg
+*.dmg
