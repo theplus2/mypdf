@@ -1,17 +1,21 @@
 import json
 import os
-from pdf_engine import PDFEngine 
+from pdf_engine import PDFEngine
+from config import get_data_directory 
 
 class LibraryManager:
     def __init__(self, filename="books.json"):
-        self.filename = filename
+        # 데이터 디렉토리 경로 가져오기
+        self.data_dir = get_data_directory()
+        self.filename = os.path.join(self.data_dir, filename)
         
         self.data = {
             "categories": ["전체 보기"],
             "books": []
         }
         
-        self.cover_dir = "covers"
+        # covers 폴더도 데이터 디렉토리 안에 생성
+        self.cover_dir = os.path.join(self.data_dir, "covers")
         if not os.path.exists(self.cover_dir):
             os.makedirs(self.cover_dir)
             
@@ -100,7 +104,9 @@ class LibraryManager:
             thumb_name = f"{title}_thumb.png"
             thumb_path = os.path.join(self.cover_dir, thumb_name)
             
-            temp_engine.create_thumbnail(path, thumb_path)
+            # [최적화] 썸네일이 이미 존재하면 재생성하지 않음
+            if not os.path.exists(thumb_path):
+                temp_engine.create_thumbnail(path, thumb_path)
             
             temp_engine.open(path)
             total_pages = temp_engine.get_total_pages()

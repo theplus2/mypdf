@@ -9,6 +9,7 @@ from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import Qt, QSize, QEvent, QTimer
 from pdf_engine import PDFEngine 
 from library_manager import LibraryManager
+from config import check_old_data_exists, migrate_old_data, cleanup_old_data
 
 # =========================================================
 # 0. UI 스타일시트 정의 (현대적이고 깔끔한 디자인)
@@ -627,7 +628,7 @@ class ReaderWidget(QWidget):
 class MainApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("나만의 PDF 서재 - Ver 1.0.1 by 윤영천 목사")
+        self.setWindowTitle("나만의 PDF 서재 - Ver 1.0.2 by 윤영천 목사")
         self.setGeometry(100, 100, 1300, 900)
         self.setStyleSheet(DARK_THEME) # 테마 적용
 
@@ -642,6 +643,9 @@ class MainApp(QMainWindow):
         self.stack.addWidget(self.library_widget)
         self.stack.addWidget(self.reader_widget)
         self.stack.setCurrentIndex(0)
+        
+        # [새로운 기능] 프로그램 시작 시 데이터 마이그레이션 확인
+        self.check_and_migrate_data()
 
     def init_menu(self):
         menubar = self.menuBar()
@@ -650,6 +654,56 @@ class MainApp(QMainWindow):
         show_help_action = QAction("사용 방법 및 정보", self)
         show_help_action.triggered.connect(self.show_help_dialog)
         help_menu.addAction(show_help_action)
+    
+    def check_and_migrate_data(self):
+        """기존 데이터가 있으면 새 위치로 마이그레이션"""
+        if check_old_data_exists():
+            msg = QMessageBox(self)
+            msg.setIcon(QMessageBox.Icon.Information)
+            msg.setWindowTitle("데이터 위치 변경")
+            msg.setText("프로그램 데이터 저장 위치가 변경되었습니다.")
+            msg.setInformativeText(
+                "기존 데이터를 새 위치로 이동하시겠습니까?\n\n"
+                "새 위치: "
+                "Windows - AppData\\Local\\MyPDFLibrary\n"
+                "macOS - ~/Library/Application Support/MyPDFLibrary\n\n"
+                "이동하면 바탕화면이 깨끗해집니다!"
+            )
+            
+            btn_migrate = msg.addButton("이동하기", QMessageBox.ButtonRole.AcceptRole)
+            btn_keep = msg.addButton("나중에", QMessageBox.ButtonRole.RejectRole)
+            
+            msg.exec()
+            
+            if msg.clickedButton() == btn_migrate:
+                success, migrated_items = migrate_old_data()
+                
+                if success and migrated_items:
+                    # 마이그레이션 성공 - 기존 파일 삭제 여부 묻기
+                    cleanup_msg = QMessageBox(self)
+                    cleanup_msg.setIcon(QMessageBox.Icon.Question)
+                    cleanup_msg.setWindowTitle("마이그레이션 완료")
+                    cleanup_msg.setText("데이터가 성공적으로 이동되었습니다!")
+                    cleanup_msg.setInformativeText(
+                        f"이동된 항목: {', '.join(migrated_items)}\n\n"
+                        "기존 위치의 파일을 삭제하시겠습니까?"
+                    )
+                    
+                    btn_delete = cleanup_msg.addButton("삭제", QMessageBox.ButtonRole.AcceptRole)
+                    btn_keep_old = cleanup_msg.addButton("보관", QMessageBox.ButtonRole.RejectRole)
+                    
+                    cleanup_msg.exec()
+                    
+                    if cleanup_msg.clickedButton() == btn_delete:
+                        if cleanup_old_data():
+                            QMessageBox.information(self, "완료", "기존 파일이 삭제되었습니다.")
+                    
+                    # 서재 화면 새로고침
+                    self.library_widget.refresh_all()
+                elif success:
+                    QMessageBox.information(self, "알림", "데이터가 이미 새 위치에 있습니다.")
+                else:
+                    QMessageBox.warning(self, "오류", "마이그레이션 중 오류가 발생했습니다.")
 
     def show_help_dialog(self):
         help_text = """
@@ -679,7 +733,7 @@ class MainApp(QMainWindow):
         <p style='font-size: 1.1em;'><b>잠실한빛교회 청년부 담당 윤영천 목사</b></p>
         <p>프로그램 사용 중 문의사항이나 피드백은 아래 블로그를 방문해주세요!</p>
         <p>🔗 <b>공식 블로그:</b> <a style='color: #4a9eff;' href='http://blog.naver.com/theplus2'>http://blog.naver.com/theplus2</a></p>
-        <p style='font-size: 0.9em; color: #aaaaaa;'>Version 1.0.1 (2026.01.19) | by 윤영천 목사</p>
+        <p style='font-size: 0.9em; color: #aaaaaa;'>Version 1.0.2 (2026.01.19) | by 윤영천 목사</p>
         """
         msg = QMessageBox(self)
         msg.setWindowTitle("프로그램 정보 및 도움말")
