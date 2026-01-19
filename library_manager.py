@@ -37,6 +37,7 @@ class LibraryManager:
             json.dump(self.data, f, ensure_ascii=False, indent=4)
 
     def update_last_page(self, path, page_num):
+        self.load_data() # [FIX] 항상 최신 데이터를 불러와서 업데이트 (새로 추가된 책 인식 문제 해결)
         import datetime
         for book in self.data["books"]:
             if book['path'] == path:
