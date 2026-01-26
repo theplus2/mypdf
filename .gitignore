@@ -17,3 +17,24 @@ dist/
 *.exe
 *.pkg
 *.dmg
+
+# System and temporary files
+nul
+opencode.json
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+*.cache

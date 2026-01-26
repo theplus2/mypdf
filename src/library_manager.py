@@ -1,7 +1,7 @@
 import json
 import os
-from pdf_engine import PDFEngine
-from config import get_data_directory 
+from .pdf_engine import PDFEngine
+from .config import get_data_directory
 
 class LibraryManager:
     def __init__(self, filename="books.json"):

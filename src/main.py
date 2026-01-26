@@ -7,9 +7,9 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QLabel, QPushButton,
                              QMenu, QStyle, QProgressDialog)
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import Qt, QSize, QEvent, QTimer
-from pdf_engine import PDFEngine 
-from library_manager import LibraryManager
-from config import check_old_data_exists, migrate_old_data, cleanup_old_data
+from .pdf_engine import PDFEngine 
+from .library_manager import LibraryManager
+from .config import check_old_data_exists, migrate_old_data, cleanup_old_data
 
 # =========================================================
 # 0. UI 스타일시트 정의 (현대적이고 깔끔한 디자인)
