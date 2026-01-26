@@ -628,7 +628,7 @@ class ReaderWidget(QWidget):
 class MainApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("나만의 PDF 서재 - Ver 1.0.2 by 윤영천 목사")
+        self.setWindowTitle("나만의 PDF 서재 - Ver 1.0.4 by 윤영천 목사")
         self.setGeometry(100, 100, 1300, 900)
         self.setStyleSheet(DARK_THEME) # 테마 적용
 
@@ -733,7 +733,7 @@ class MainApp(QMainWindow):
         <p style='font-size: 1.1em;'><b>잠실한빛교회 청년부 담당 윤영천 목사</b></p>
         <p>프로그램 사용 중 문의사항이나 피드백은 아래 블로그를 방문해주세요!</p>
         <p>🔗 <b>공식 블로그:</b> <a style='color: #4a9eff;' href='http://blog.naver.com/theplus2'>http://blog.naver.com/theplus2</a></p>
-        <p style='font-size: 0.9em; color: #aaaaaa;'>Version 1.0.2 (2026.01.19) | by 윤영천 목사</p>
+        <p style='font-size: 0.9em; color: #aaaaaa;'>Version 1.0.4 (2026.01.26) | by 윤영천 목사</p>
         <hr>
         <p style='font-size: 1.0em;'><b>모든 피드백과 소통은 오픈 채팅방으로 오세요!</b></p>
         <p>🔗 <a style='color: #4a9eff;' href='https://open.kakao.com/o/g8IRvqci'>https://open.kakao.com/o/g8IRvqci</a></p>

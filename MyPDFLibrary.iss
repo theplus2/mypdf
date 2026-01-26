@@ -2,7 +2,7 @@
 [Setup]
 ; 1. 프로그램 기본 정보
 AppName=나만의 PDF 서재
-AppVersion=1.0.2
+AppVersion=1.0.4
 DefaultGroupName=나만의 PDF 서재
 AppPublisher=윤영천 목사
 
