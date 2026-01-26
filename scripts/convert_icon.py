@@ -45,4 +45,4 @@ def convert_ico_to_icns(ico_path, icns_path):
         print(f"Failed to convert: {e}")
 
 if __name__ == "__main__":
-    convert_ico_to_icns("book.ico", "book.icns")
+    convert_ico_to_icns("assets/book.ico", "assets/book.icns")

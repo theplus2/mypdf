@@ -7,9 +7,9 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QLabel, QPushButton,
                              QMenu, QStyle, QProgressDialog)
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import Qt, QSize, QEvent, QTimer
-from .pdf_engine import PDFEngine 
-from .library_manager import LibraryManager
-from .config import check_old_data_exists, migrate_old_data, cleanup_old_data
+from pdf_engine import PDFEngine 
+from library_manager import LibraryManager
+from config import check_old_data_exists, migrate_old_data, cleanup_old_data
 
 # =========================================================
 # 0. UI 스타일시트 정의 (현대적이고 깔끔한 디자인)
@@ -734,6 +734,9 @@ class MainApp(QMainWindow):
         <p>프로그램 사용 중 문의사항이나 피드백은 아래 블로그를 방문해주세요!</p>
         <p>🔗 <b>공식 블로그:</b> <a style='color: #4a9eff;' href='http://blog.naver.com/theplus2'>http://blog.naver.com/theplus2</a></p>
         <p style='font-size: 0.9em; color: #aaaaaa;'>Version 1.0.2 (2026.01.19) | by 윤영천 목사</p>
+        <hr>
+        <p style='font-size: 1.0em;'><b>모든 피드백과 소통은 오픈 채팅방으로 오세요!</b></p>
+        <p>🔗 <a style='color: #4a9eff;' href='https://open.kakao.com/o/g8IRvqci'>https://open.kakao.com/o/g8IRvqci</a></p>
         """
         msg = QMessageBox(self)
         msg.setWindowTitle("프로그램 정보 및 도움말")

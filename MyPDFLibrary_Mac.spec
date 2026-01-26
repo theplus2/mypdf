@@ -6,7 +6,7 @@
 block_cipher = None
 
 a = Analysis(
-    ['main.py'],
+    ['src/main.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -38,7 +38,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='book.icns', # Mac용 아이콘 (변환된 파일 사용)
+    icon='assets/book.icns', # Mac용 아이콘 (변환된 파일 사용)
 )
 
 coll = COLLECT(
@@ -55,7 +55,7 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name='MyPDFLibrary.app',
-    icon='book.icns',
+    icon='assets/book.icns',
     bundle_identifier='com.yoon.mypdflibrary',
     info_plist={
         'NSHighResolutionCapable': 'True',
