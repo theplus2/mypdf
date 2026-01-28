@@ -56,6 +56,11 @@ jobs:
       run: |
         python -m PyInstaller MyPDFLibrary_Mac.spec --clean --noconfirm
 
+    - name: Ad-hoc Sign App
+      run: |
+        # Ad-hoc signing to prevent potential crash on ARM64
+        codesign --force --deep --sign - dist/MyPDFLibrary.app
+
     - name: Create Zip for Release
       run: |
         cd dist

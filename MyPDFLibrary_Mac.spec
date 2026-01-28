@@ -22,7 +22,6 @@ a = Analysis(
 )
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
-exe = EXE(
     pyz,
     a.scripts,
     [],
@@ -34,8 +33,8 @@ exe = EXE(
     upx=True,
     console=False, # Mac 앱은 콘솔 없음
     disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
+    argv_emulation=True,
+    target_arch='arm64',
     codesign_identity=None,
     entitlements_file=None,
     icon='assets/book.icns', # Mac용 아이콘 (변환된 파일 사용)
@@ -60,7 +59,7 @@ app = BUNDLE(
     info_plist={
         'NSHighResolutionCapable': 'True',
         'LSBackgroundOnly': 'False',
-        'CFBundleShortVersionString': '1.0.4',
-        'CFBundleVersion': '1.0.4',
+        'CFBundleShortVersionString': '1.0.5',
+        'CFBundleVersion': '1.0.5',
     },
 )

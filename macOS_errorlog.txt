@@ -1,0 +1,549 @@
+아쉽게 맥은 아직 적용이 안 되나 봅니다.
+이런 오류가 뜨네요...ㅠㅠ
+
+——————————————————
+Translated Report (Full Report Below)
+——————————————————
+Process:             MyPDFLibrary [92849]
+Path:                /private/var/folders/*/MyPDFLibrary.app/Contents/MacOS/MyPDFLibrary
+Identifier:          com.yoon.mypdflibrary
+Version:             1.0.4 (1.0.4)
+Code Type:           ARM-64 (Native)
+Role:                Background
+Parent Process:      launchd [1]
+Coalition:           com.yoon.mypdflibrary [29586]
+User ID:             501
+
+Date/Time:           2026-01-28 09:33:42.9847 +0900
+Launch Time:         2026-01-28 09:33:42.7493 +0900
+Hardware Model:      Mac14,12
+OS Version:          macOS 26.2 (25C56)
+Release Type:        User
+
+Crash Reporter Key:  DEE5C0DB-19CD-096C-0231-ECD538B3916F
+Incident Identifier: 7A5BBD42-6D0C-4400-A9F5-8E70A983C30E
+
+Time Awake Since Boot: 510000 seconds
+
+System Integrity Protection: enabled
+
+Triggered by Thread: 0, Dispatch Queue: com.apple.main-thread
+
+Exception Type:    EXC_BAD_ACCESS (SIGSEGV)
+Exception Subtype: KERN_INVALID_ADDRESS at 0x0000000000000008
+Exception Codes:   0x0000000000000001, 0x0000000000000008
+
+Termination Reason:  Namespace SIGNAL, Code 11, Segmentation fault: 11
+Terminating Process: exc handler [92849]
+
+
+VM Region Info: 0x8 is not in any region.  Bytes before following region: 4369334264
+      REGION TYPE                    START - END         [ VSIZE] PRT/MAX SHRMOD  REGION DETAIL
+      UNUSED SPACE AT START
+--->  
+      __TEXT                      1046ec000-1046f8000    [   48K] r-x/r-x SM=COW  /var/folders/*/MyPDFLibrary.app/Contents/MacOS/MyPDFLibrary
+
+Thread 0 Crashed::  Dispatch queue: com.apple.main-thread
+0   CoreFoundation                	       0x198adb510 __CFCheckCFInfoPACSignature + 4
+1   CoreFoundation                	       0x1989e1684 CFBundleCopyBundleURL + 24
+2   QtCore                        	       0x106a847bc QLibraryInfoPrivate::paths(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode) + 2164
+3   QtCore                        	       0x106a83e54 QLibraryInfoPrivate::path(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode) + 48
+4   QtCore                        	       0x106a84aa8 QLibraryInfoPrivate::paths(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode) + 2912
+5   QtCore                        	       0x106a83e54 QLibraryInfoPrivate::path(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode) + 48
+6   QtCore                        	       0x106aca1c4 0x106a64000 + 418244
+7   QtCore                        	       0x106ac9734 0x106a64000 + 415540
+8   QtCore                        	       0x106acbedc QLoggingRegistry::instance() + 172
+9   QtCore                        	       0x106ac8784 QLoggingCategory::QLoggingCategory(char const*, QtMsgType) + 56
+10  QtCore.abi3.so                	       0x106249868 _GLOBAL__sub_I_qdarwinpermissionplugin_location.mm + 308
+11  dyld                          	       0x1985d6cb0 invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const + 444
+12  dyld                          	       0x198614730 invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const + 324
+13  dyld                          	       0x198633534 invocation function for block in mach_o::Header::forEachSection(void (mach_o::Header::SectionInfo const&, bool&) block_pointer) const + 312
+14  dyld                          	       0x198630158 mach_o::Header::forEachLoadCommand(void (load_command const*, bool&) block_pointer) const + 208
+15  dyld                          	       0x1986319f0 mach_o::Header::forEachSection(void (mach_o::Header::SectionInfo const&, bool&) block_pointer) const + 124
+16  dyld                          	       0x198614220 dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const + 516
+17  dyld                          	       0x1985d6a68 dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const + 172
+18  dyld                          	       0x1985de8b0 dyld4::JustInTimeLoader::runInitializers(dyld4::RuntimeState&) const + 36
+19  dyld                          	       0x1985d7214 dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, dyld3::Array<dyld4::Loader const*>&, dyld3::Array<dyld4::Loader const*>&) const + 308
+20  dyld                          	       0x1985dbe50 dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const::$_0::operator()() const + 180
+21  dyld                          	       0x1985d7530 dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const + 716
+22  dyld                          	       0x1985fbad0 dyld4::APIs::dlopen_from(char const*, int, void*)::$_0::operator()() const + 1856
+23  dyld                          	       0x1985f036c dyld4::APIs::dlopen_from(char const*, int, void*) + 1104
+24  dyld                          	       0x1985efe70 dyld4::APIs::dlopen(char const*, int) + 128
+25  Python                        	       0x1057d7580 _imp_create_dynamic + 1304
+26  Python                        	       0x1056cc430 cfunction_vectorcall_FASTCALL + 80
+27  Python                        	       0x105791910 _PyEval_EvalFrameDefault + 64356
+28  Python                        	       0x105780af8 PyEval_EvalCode + 276
+29  MyPDFLibrary                  	       0x1046ef328 0x1046ec000 + 13096
+30  MyPDFLibrary                  	       0x1046efc18 0x1046ec000 + 15384
+31  dyld                          	       0x1985b9d54 start + 7184
+
+Thread 1:
+0   libsystem_kernel.dylib        	       0x19894cc74 __ulock_wait2 + 8
+1   libsystem_platform.dylib      	       0x1989893c4 _os_unfair_lock_lock_slow + 176
+2   dyld                          	       0x1985f0074 dyld4::APIs::dlopen_from(char const*, int, void*) + 344
+3   dyld                          	       0x1985efe70 dyld4::APIs::dlopen(char const*, int) + 128
+4   CoreFoundation                	       0x198a37534 _CFBundleDlfcnLoadBundle + 172
+5   CoreFoundation                	       0x198a8616c _CFBundleLoadExecutableAndReturnError + 424
+6   Security                      	       0x19c582710 Security::LoadableBundle::load() + 48
+7   Security                      	       0x19c48bf64 Security::ModuleNexus<Security::CodeSigning::PluginHost>::make() + 348
+8   Security                      	       0x19c583300 invocation function for block in Security::ModuleNexusCommon::create(void* (*)()) + 24
+9   libdispatch.dylib             	       0x1987dead4 _dispatch_client_callout + 16
+10  libdispatch.dylib             	       0x1987c7a60 _dispatch_once_callout + 32
+11  Security                      	       0x19c23ed7c Security::ModuleNexusCommon::create(void* (*)()) + 140
+12  Security                      	       0x19c48bdbc Security::ModuleNexus<Security::CodeSigning::PluginHost>::operator()() + 68
+13  Security                      	       0x19c48c108 Security::CodeSigning::RequirementParser<Security::CodeSigning::Requirement>::operator()(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) + 72
+14  Security                      	       0x19c44d8dc SecRequirementCreateWithStringAndErrors + 88
+15  QtCore                        	       0x106c81f48 0x106a64000 + 2219848
+16  libsystem_pthread.dylib       	       0x198981c08 _pthread_start + 136
+17  libsystem_pthread.dylib       	       0x19897cba8 thread_start + 8
+
+Thread 2:
+
+Thread 3:
+
+
+Thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000000000000000   x1: 0x000000012f989690   x2: 0x000000012f900000   x3: 0x0000000000000000
+    x4: 0x0000000000000000   x5: 0x0000000000000000   x6: 0x0000000000000000   x7: 0x00000000000000ba
+    x8: 0x0000000000000008   x9: 0x9c9ee9aa50f80011  x10: 0x00004e3a1b001d80  x11: 0x0000000000000001
+   x12: 0x0000000000000001  x13: 0x0000000080000000  x14: 0x9e3779b97f4a7c55  x15: 0x000000000000000c
+   x16: 0x00000001989e166c  x17: 0x00000002058c2698  x18: 0x0000000000000000  x19: 0x0000000000000000
+   x20: 0x000000012f920a70  x21: 0x0000000000000000  x22: 0x0000000000000001  x23: 0x000000012f921100
+   x24: 0x00000000000001c5  x25: 0x00000000000001c5  x26: 0x0000000106f31780  x27: 0x0000000000000000
+   x28: 0x000000012f989690   fp: 0x000000016b70f120   lr: 0x00000001989e1684
+    sp: 0x000000016b70f110   pc: 0x0000000198adb510 cpsr: 0x60001000
+   far: 0x0000000000000008  esr: 0x92000006 (Data Abort) byte read Translation fault
+
+Binary Images:
+       0x1046ec000 -        0x1046f7fff com.yoon.mypdflibrary (1.0.4) <4b3e9726-bf33-e2de-1d0b-12bb7fe95069> /private/var/folders/*/MyPDFLibrary.app/Contents/MacOS/MyPDFLibrary
+       0x1055d8000 -        0x1059a3fff Python (*) <5662657e-7928-39be-8954-d582f8f34d51> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/Python
+       0x104d18000 -        0x104d1ffff _struct.cpython-311-darwin.so (*) <2a9c55d5-61e3-3c08-afe7-a90f29fb3885> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_struct.cpython-311-darwin.so
+       0x104d34000 -        0x104d3bfff zlib.cpython-311-darwin.so (*) <78e93840-6aa2-3e12-88b1-3d140c86db21> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/zlib.cpython-311-darwin.so
+       0x104d80000 -        0x104d93fff _ctypes.cpython-311-darwin.so (*) <1288fa0d-7e49-3d72-a33f-338b00fa673f> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_ctypes.cpython-311-darwin.so
+       0x104d50000 -        0x104d53fff _opcode.cpython-311-darwin.so (*) <e1984258-3aba-3351-9b97-6cc398e29690> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_opcode.cpython-311-darwin.so
+       0x104d64000 -        0x104d6bfff binascii.cpython-311-darwin.so (*) <b942d9ac-2a05-30f3-90ef-07a312233107> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/binascii.cpython-311-darwin.so
+       0x10501c000 -        0x10501ffff _bz2.cpython-311-darwin.so (*) <76d59f87-05bd-3453-988f-6a1d92e48d0b> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_bz2.cpython-311-darwin.so
+       0x105074000 -        0x1050a3fff _lzma.cpython-311-darwin.so (*) <aa0512bd-866a-3f89-a0b1-370c93044c89> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_lzma.cpython-311-darwin.so
+       0x1051b8000 -        0x1051cffff _pickle.cpython-311-darwin.so (*) <a262ab27-9e1b-3b52-9b2f-1c173bcac7f9> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_pickle.cpython-311-darwin.so
+       0x1051e4000 -        0x1051f3fff _socket.cpython-311-darwin.so (*) <3454571c-408b-34e5-9bae-96f393e4fb85> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_socket.cpython-311-darwin.so
+       0x105050000 -        0x10505bfff math.cpython-311-darwin.so (*) <29c3ec8a-19d4-363b-a6d9-9c2abec94f03> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/math.cpython-311-darwin.so
+       0x105030000 -        0x105037fff select.cpython-311-darwin.so (*) <4c0501e5-d7a1-34d7-aa7c-75dfe924b268> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/select.cpython-311-darwin.so
+       0x105228000 -        0x105233fff array.cpython-311-darwin.so (*) <9c6afc97-732b-3225-b6e4-d3cd90218697> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/array.cpython-311-darwin.so
+       0x105208000 -        0x10520bfff fcntl.cpython-311-darwin.so (*) <4d6fbc3b-cd0b-392c-9f1c-9ff89288e939> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/fcntl.cpython-311-darwin.so
+       0x105248000 -        0x10524bfff _posixsubprocess.cpython-311-darwin.so (*) <3a00fdd3-8009-389a-b150-0f692c95822f> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_posixsubprocess.cpython-311-darwin.so
+       0x10525c000 -        0x10525ffff _typing.cpython-311-darwin.so (*) <4b805031-de4f-3814-b939-e5cb2842c3e6> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/python3.11/lib-dynload/_typing.cpython-311-darwin.so
+       0x1060d0000 -        0x10629ffff QtCore.abi3.so (*) <bcc7f474-9688-32b2-8d15-191beec4671c> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/PyQt6/QtCore.abi3.so
+       0x106a64000 -        0x106f23fff QtCore (*) <4a7a0348-b410-3e23-8373-53f6876eb7f4> /private/var/folders/*/MyPDFLibrary.app/Contents/Frameworks/QtCore
+       0x1989c1000 -        0x198f09c3f com.apple.CoreFoundation (6.9) <649000a2-3eb4-3cf5-970a-d3cb37b5780c> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+       0x1985b1000 -        0x19864ffc3 dyld (*) <0975afba-c46b-364c-bd84-a75daa9e455a> /usr/lib/dyld
+               0x0 - 0xffffffffffffffff ??? (*) <00000000-0000-0000-0000-000000000000> ???
+       0x19893e000 -        0x19897a49f libsystem_kernel.dylib (*) <548c45c8-9733-3f0d-8ef4-c06df1df2ad0> /usr/lib/system/libsystem_kernel.dylib
+       0x198988000 -        0x1989903ef libsystem_platform.dylib (*) <4dbaf982-1576-3ffc-86be-03a9d2c96be5> /usr/lib/system/libsystem_platform.dylib
+       0x19c23d000 -        0x19c66167f com.apple.security (7.0) <6f4ea801-3def-3377-981b-325ff7a96f8a> /System/Library/Frameworks/Security.framework/Versions/A/Security
+       0x1987c3000 -        0x198809e5f libdispatch.dylib (*) <a4b349e8-dd6f-3b71-84d9-34f3b4acd849> /usr/lib/system/libdispatch.dylib
+       0x19897b000 -        0x198987abb libsystem_pthread.dylib (*) <527c4ba0-91a5-378b-b3e2-d38269ca5a66> /usr/lib/system/libsystem_pthread.dylib
+
+External Modification Summary:
+  Calls made by other processes targeting this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by all processes on this machine:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+
+VM Region Summary:
+ReadOnly portion of Libraries: Total=1.2G resident=0K(0%) swapped_out_or_unallocated=1.2G(100%)
+Writable regions: Total=314.8M written=481K(0%) resident=481K(0%) swapped_out=0K(0%) unallocated=314.4M(100%)
+
+                                VIRTUAL   REGION 
+REGION TYPE                        SIZE    COUNT (non-coalesced) 
+===========                     =======  ======= 
+Activity Tracing                   256K        1 
+Dispatch continuations            80.0M        1 
+Kernel Alloc Once                   32K        1 
+MALLOC                           218.1M       27 
+MALLOC guard page                   96K        6 
+STACK GUARD                       56.1M        4 
+Stack                             9808K        4 
+VM_ALLOCATE                       6160K        7 
+__AUTH                            3018K      335 
+__AUTH_CONST                      52.6M      626 
+__CTF                               824        1 
+__DATA                            16.4M      599 
+__DATA_CONST                      25.5M      649 
+__DATA_DIRTY                      3712K      541 
+__FONT_DATA                        2352        1 
+__LINKEDIT                       598.0M       20 
+__OBJC_RO                         78.4M        1 
+__OBJC_RW                         2570K        1 
+__TEXT                           656.0M      665 
+__TPRO_CONST                       128K        2 
+dyld private memory                128K        1 
+mapped file                       32.7M        3 
+page table in kernel               481K        1 
+shared memory                       80K        4 
+===========                     =======  ======= 
+TOTAL                              1.8G     3501 
+
+
+-----------
+Full Report
+-----------
+
+{"app_name":"MyPDFLibrary","timestamp":"2026-01-28 09:33:43.00 +0900","app_version":"1.0.4","slice_uuid":"4b3e9726-bf33-e2de-1d0b-12bb7fe95069","build_version":"1.0.4","platform":1,"bundleID":"com.yoon.mypdflibrary","share_with_app_devs":0,"is_first_party":0,"bug_type":"309","os_version":"macOS 26.2 (25C56)","roots_installed":0,"name":"MyPDFLibrary","incident_id":"7A5BBD42-6D0C-4400-A9F5-8E70A983C30E"}
+{
+  "uptime" : 510000,
+  "procRole" : "Background",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "Mac14,12",
+  "coalitionID" : 29586,
+  "osVersion" : {
+    "train" : "macOS 26.2",
+    "build" : "25C56",
+    "releaseType" : "User"
+  },
+  "captureTime" : "2026-01-28 09:33:42.9847 +0900",
+  "codeSigningMonitor" : 2,
+  "incident" : "7A5BBD42-6D0C-4400-A9F5-8E70A983C30E",
+  "pid" : 92849,
+  "translated" : false,
+  "cpuType" : "ARM-64",
+  "procLaunch" : "2026-01-28 09:33:42.7493 +0900",
+  "procStartAbsTime" : 12451721045046,
+  "procExitAbsTime" : 12451726686506,
+  "procName" : "MyPDFLibrary",
+  "procPath" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/MacOS\/MyPDFLibrary",
+  "bundleInfo" : {"CFBundleShortVersionString":"1.0.4","CFBundleVersion":"1.0.4","CFBundleIdentifier":"com.yoon.mypdflibrary"},
+  "storeInfo" : {"deviceIdentifierForVendor":"F193FB1D-0EB5-573D-A2FA-D900FD40D575","thirdParty":true},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.yoon.mypdflibrary",
+  "crashReporterKey" : "DEE5C0DB-19CD-096C-0231-ECD538B3916F",
+  "appleIntelligenceStatus" : {"state":"available"},
+  "developerMode" : 1,
+  "codeSigningID" : "com.yoon.mypdflibrary",
+  "codeSigningTeamID" : "",
+  "codeSigningFlags" : 570425857,
+  "codeSigningValidationCategory" : 10,
+  "codeSigningTrustLevel" : 4294967295,
+  "codeSigningAuxiliaryInfo" : 0,
+  "instructionByteStream" : {"beforePC":"KQFA+SgBCIofARDr4AefGsADX9Z\/IwPV\/Xu\/qf0DAJGuSgOUCCAAkQ==","atPC":"Cf3fyAj938gIPXiSCOlpkooFgVIIMcqaCDDImihRSMofTWjyQAAAVA=="},
+  "bootSessionUUID" : "AB51A40C-9657-4636-9F68-DB27C25CCC24",
+  "sip" : "enabled",
+  "vmRegionInfo" : "0x8 is not in any region.  Bytes before following region: 4369334264\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      UNUSED SPACE AT START\n--->  \n      __TEXT                      1046ec000-1046f8000    [   48K] r-x\/r-x SM=COW  \/var\/folders\/*\/MyPDFLibrary.app\/Contents\/MacOS\/MyPDFLibrary",
+  "exception" : {"codes":"0x0000000000000001, 0x0000000000000008","rawCodes":[1,8],"type":"EXC_BAD_ACCESS","signal":"SIGSEGV","subtype":"KERN_INVALID_ADDRESS at 0x0000000000000008"},
+  "termination" : {"flags":0,"code":11,"namespace":"SIGNAL","indicator":"Segmentation fault: 11","byProc":"exc handler","byPid":92849},
+  "vmregioninfo" : "0x8 is not in any region.  Bytes before following region: 4369334264\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      UNUSED SPACE AT START\n--->  \n      __TEXT                      1046ec000-1046f8000    [   48K] r-x\/r-x SM=COW  \/var\/folders\/*\/MyPDFLibrary.app\/Contents\/MacOS\/MyPDFLibrary",
+  "extMods" : {"caller":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"system":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"targeted":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"warnings":0},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":11864534,"threadState":{"x":[{"value":0},{"value":5093496464},{"value":5092933632},{"value":0},{"value":0},{"value":0},{"value":0},{"value":186},{"value":8},{"value":11285714633949184017},{"value":86011468062080},{"value":1},{"value":1},{"value":2147483648},{"value":11400714819323198549},{"value":12},{"value":6855464556,"symbolLocation":0,"symbol":"CFBundleCopyBundleURL"},{"value":8683005592,"symbolLocation":0,"symbol":"OBJC_CLASS_$_NSURL"},{"value":0},{"value":0},{"value":5093067376},{"value":0},{"value":1},{"value":5093069056},{"value":453},{"value":453},{"value":4411561856},{"value":0},{"value":5093496464}],"flavor":"ARM_THREAD_STATE64","lr":{"value":6855464580},"cpsr":{"value":1610616832},"fp":{"value":6097531168},"sp":{"value":6097531152},"esr":{"value":2449473542,"description":"(Data Abort) byte read Translation fault"},"pc":{"value":6856488208,"matchesCrashFrame":1},"far":{"value":8}},"queue":"com.apple.main-thread","frames":[{"imageOffset":1156368,"symbol":"__CFCheckCFInfoPACSignature","symbolLocation":4,"imageIndex":19},{"imageOffset":132740,"symbol":"CFBundleCopyBundleURL","symbolLocation":24,"imageIndex":19},{"imageOffset":133052,"symbol":"QLibraryInfoPrivate::paths(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode)","symbolLocation":2164,"imageIndex":18},{"imageOffset":130644,"symbol":"QLibraryInfoPrivate::path(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode)","symbolLocation":48,"imageIndex":18},{"imageOffset":133800,"symbol":"QLibraryInfoPrivate::paths(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode)","symbolLocation":2912,"imageIndex":18},{"imageOffset":130644,"symbol":"QLibraryInfoPrivate::path(QLibraryInfo::LibraryPath, QLibraryInfoPrivate::UsageMode)","symbolLocation":48,"imageIndex":18},{"imageOffset":418244,"imageIndex":18},{"imageOffset":415540,"imageIndex":18},{"imageOffset":425692,"symbol":"QLoggingRegistry::instance()","symbolLocation":172,"imageIndex":18},{"imageOffset":411524,"symbol":"QLoggingCategory::QLoggingCategory(char const*, QtMsgType)","symbolLocation":56,"imageIndex":18},{"imageOffset":1546344,"symbol":"_GLOBAL__sub_I_qdarwinpermissionplugin_location.mm","symbolLocation":308,"imageIndex":17},{"imageOffset":154800,"symbol":"invocation function for block in dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":444,"imageIndex":20},{"imageOffset":407344,"symbol":"invocation function for block in dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":324,"imageIndex":20},{"imageOffset":533812,"symbol":"invocation function for block in mach_o::Header::forEachSection(void (mach_o::Header::SectionInfo const&, bool&) block_pointer) const","symbolLocation":312,"imageIndex":20},{"imageOffset":520536,"symbol":"mach_o::Header::forEachLoadCommand(void (load_command const*, bool&) block_pointer) const","symbolLocation":208,"imageIndex":20},{"imageOffset":526832,"symbol":"mach_o::Header::forEachSection(void (mach_o::Header::SectionInfo const&, bool&) block_pointer) const","symbolLocation":124,"imageIndex":20},{"imageOffset":406048,"symbol":"dyld3::MachOAnalyzer::forEachInitializer(Diagnostics&, dyld3::MachOAnalyzer::VMAddrConverter const&, void (unsigned int) block_pointer, void const*) const","symbolLocation":516,"imageIndex":20},{"imageOffset":154216,"symbol":"dyld4::Loader::findAndRunAllInitializers(dyld4::RuntimeState&) const","symbolLocation":172,"imageIndex":20},{"imageOffset":186544,"symbol":"dyld4::JustInTimeLoader::runInitializers(dyld4::RuntimeState&) const","symbolLocation":36,"imageIndex":20},{"imageOffset":156180,"symbol":"dyld4::Loader::runInitializersBottomUp(dyld4::RuntimeState&, dyld3::Array<dyld4::Loader const*>&, dyld3::Array<dyld4::Loader const*>&) const","symbolLocation":308,"imageIndex":20},{"imageOffset":175696,"symbol":"dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const::$_0::operator()() const","symbolLocation":180,"imageIndex":20},{"imageOffset":156976,"symbol":"dyld4::Loader::runInitializersBottomUpPlusUpwardLinks(dyld4::RuntimeState&) const","symbolLocation":716,"imageIndex":20},{"imageOffset":305872,"symbol":"dyld4::APIs::dlopen_from(char const*, int, void*)::$_0::operator()() const","symbolLocation":1856,"imageIndex":20},{"imageOffset":258924,"symbol":"dyld4::APIs::dlopen_from(char const*, int, void*)","symbolLocation":1104,"imageIndex":20},{"imageOffset":257648,"symbol":"dyld4::APIs::dlopen(char const*, int)","symbolLocation":128,"imageIndex":20},{"imageOffset":2094464,"symbol":"_imp_create_dynamic","symbolLocation":1304,"imageIndex":1},{"imageOffset":1000496,"symbol":"cfunction_vectorcall_FASTCALL","symbolLocation":80,"imageIndex":1},{"imageOffset":1808656,"symbol":"_PyEval_EvalFrameDefault","symbolLocation":64356,"imageIndex":1},{"imageOffset":1739512,"symbol":"PyEval_EvalCode","symbolLocation":276,"imageIndex":1},{"imageOffset":13096,"imageIndex":0},{"imageOffset":15384,"imageIndex":0},{"imageOffset":36180,"symbol":"start","symbolLocation":7184,"imageIndex":20}]},{"id":11864556,"frames":[{"imageOffset":60532,"symbol":"__ulock_wait2","symbolLocation":8,"imageIndex":22},{"imageOffset":5060,"symbol":"_os_unfair_lock_lock_slow","symbolLocation":176,"imageIndex":23},{"imageOffset":258164,"symbol":"dyld4::APIs::dlopen_from(char const*, int, void*)","symbolLocation":344,"imageIndex":20},{"imageOffset":257648,"symbol":"dyld4::APIs::dlopen(char const*, int)","symbolLocation":128,"imageIndex":20},{"imageOffset":484660,"symbol":"_CFBundleDlfcnLoadBundle","symbolLocation":172,"imageIndex":19},{"imageOffset":807276,"symbol":"_CFBundleLoadExecutableAndReturnError","symbolLocation":424,"imageIndex":19},{"imageOffset":3430160,"symbol":"Security::LoadableBundle::load()","symbolLocation":48,"imageIndex":24},{"imageOffset":2420580,"symbol":"Security::ModuleNexus<Security::CodeSigning::PluginHost>::make()","symbolLocation":348,"imageIndex":24},{"imageOffset":3433216,"symbol":"invocation function for block in Security::ModuleNexusCommon::create(void* (*)())","symbolLocation":24,"imageIndex":24},{"imageOffset":113364,"symbol":"_dispatch_client_callout","symbolLocation":16,"imageIndex":25},{"imageOffset":19040,"symbol":"_dispatch_once_callout","symbolLocation":32,"imageIndex":25},{"imageOffset":7548,"symbol":"Security::ModuleNexusCommon::create(void* (*)())","symbolLocation":140,"imageIndex":24},{"imageOffset":2420156,"symbol":"Security::ModuleNexus<Security::CodeSigning::PluginHost>::operator()()","symbolLocation":68,"imageIndex":24},{"imageOffset":2421000,"symbol":"Security::CodeSigning::RequirementParser<Security::CodeSigning::Requirement>::operator()(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&)","symbolLocation":72,"imageIndex":24},{"imageOffset":2164956,"symbol":"SecRequirementCreateWithStringAndErrors","symbolLocation":88,"imageIndex":24},{"imageOffset":2219848,"imageIndex":18},{"imageOffset":27656,"symbol":"_pthread_start","symbolLocation":136,"imageIndex":26},{"imageOffset":7080,"symbol":"thread_start","symbolLocation":8,"imageIndex":26}],"threadState":{"x":[{"value":18446744073709551612},{"value":0},{"value":258},{"value":0},{"value":0},{"value":0},{"value":0},{"value":279},{"value":258},{"value":259},{"value":2},{"value":1},{"value":6098102389},{"value":0},{"value":11723980032},{"value":134217728},{"value":544},{"value":8705673784},{"value":0},{"value":6915},{"value":0},{"value":0},{"value":6097548392},{"value":258},{"value":0},{"value":16777218},{"value":6915},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":6855103428},"cpsr":{"value":1073745920},"fp":{"value":6098101824},"sp":{"value":6098101760},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6854855796},"far":{"value":0}}},{"id":11864557,"frames":[],"threadState":{"x":[{"value":6098677760},{"value":4611},{"value":6098141184},{"value":0},{"value":409604},{"value":18446744073709551615},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":0},"cpsr":{"value":4096},"fp":{"value":0},"sp":{"value":6098677760},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6855052180},"far":{"value":0}}},{"id":11864558,"frames":[],"threadState":{"x":[{"value":6099251200},{"value":8451},{"value":6098714624},{"value":0},{"value":409604},{"value":18446744073709551615},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":0},"cpsr":{"value":4096},"fp":{"value":0},"sp":{"value":6099251200},"esr":{"value":1442840704,"description":"(Syscall)"},"pc":{"value":6855052180},"far":{"value":0}}}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4369334272,
+    "CFBundleShortVersionString" : "1.0.4",
+    "CFBundleIdentifier" : "com.yoon.mypdflibrary",
+    "size" : 49152,
+    "uuid" : "4b3e9726-bf33-e2de-1d0b-12bb7fe95069",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/MacOS\/MyPDFLibrary",
+    "name" : "MyPDFLibrary",
+    "CFBundleVersion" : "1.0.4"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4384980992,
+    "size" : 3981312,
+    "uuid" : "5662657e-7928-39be-8954-d582f8f34d51",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/Python",
+    "name" : "Python"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4375805952,
+    "size" : 32768,
+    "uuid" : "2a9c55d5-61e3-3c08-afe7-a90f29fb3885",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_struct.cpython-311-darwin.so",
+    "name" : "_struct.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4375920640,
+    "size" : 32768,
+    "uuid" : "78e93840-6aa2-3e12-88b1-3d140c86db21",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/zlib.cpython-311-darwin.so",
+    "name" : "zlib.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4376231936,
+    "size" : 81920,
+    "uuid" : "1288fa0d-7e49-3d72-a33f-338b00fa673f",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_ctypes.cpython-311-darwin.so",
+    "name" : "_ctypes.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4376035328,
+    "size" : 16384,
+    "uuid" : "e1984258-3aba-3351-9b97-6cc398e29690",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_opcode.cpython-311-darwin.so",
+    "name" : "_opcode.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4376117248,
+    "size" : 32768,
+    "uuid" : "b942d9ac-2a05-30f3-90ef-07a312233107",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/binascii.cpython-311-darwin.so",
+    "name" : "binascii.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4378968064,
+    "size" : 16384,
+    "uuid" : "76d59f87-05bd-3453-988f-6a1d92e48d0b",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_bz2.cpython-311-darwin.so",
+    "name" : "_bz2.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4379328512,
+    "size" : 196608,
+    "uuid" : "aa0512bd-866a-3f89-a0b1-370c93044c89",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_lzma.cpython-311-darwin.so",
+    "name" : "_lzma.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4380655616,
+    "size" : 98304,
+    "uuid" : "a262ab27-9e1b-3b52-9b2f-1c173bcac7f9",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_pickle.cpython-311-darwin.so",
+    "name" : "_pickle.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4380835840,
+    "size" : 65536,
+    "uuid" : "3454571c-408b-34e5-9bae-96f393e4fb85",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_socket.cpython-311-darwin.so",
+    "name" : "_socket.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4379181056,
+    "size" : 49152,
+    "uuid" : "29c3ec8a-19d4-363b-a6d9-9c2abec94f03",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/math.cpython-311-darwin.so",
+    "name" : "math.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4379049984,
+    "size" : 32768,
+    "uuid" : "4c0501e5-d7a1-34d7-aa7c-75dfe924b268",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/select.cpython-311-darwin.so",
+    "name" : "select.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4381114368,
+    "size" : 49152,
+    "uuid" : "9c6afc97-732b-3225-b6e4-d3cd90218697",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/array.cpython-311-darwin.so",
+    "name" : "array.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4380983296,
+    "size" : 16384,
+    "uuid" : "4d6fbc3b-cd0b-392c-9f1c-9ff89288e939",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/fcntl.cpython-311-darwin.so",
+    "name" : "fcntl.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4381245440,
+    "size" : 16384,
+    "uuid" : "3a00fdd3-8009-389a-b150-0f692c95822f",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_posixsubprocess.cpython-311-darwin.so",
+    "name" : "_posixsubprocess.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4381327360,
+    "size" : 16384,
+    "uuid" : "4b805031-de4f-3814-b939-e5cb2842c3e6",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/python3.11\/lib-dynload\/_typing.cpython-311-darwin.so",
+    "name" : "_typing.cpython-311-darwin.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4396482560,
+    "size" : 1900544,
+    "uuid" : "bcc7f474-9688-32b2-8d15-191beec4671c",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/PyQt6\/QtCore.abi3.so",
+    "name" : "QtCore.abi3.so"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4406525952,
+    "size" : 4980736,
+    "uuid" : "4a7a0348-b410-3e23-8373-53f6876eb7f4",
+    "path" : "\/private\/var\/folders\/*\/MyPDFLibrary.app\/Contents\/Frameworks\/QtCore",
+    "name" : "QtCore"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6855331840,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.CoreFoundation",
+    "size" : 5540928,
+    "uuid" : "649000a2-3eb4-3cf5-970a-d3cb37b5780c",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/Versions\/A\/CoreFoundation",
+    "name" : "CoreFoundation",
+    "CFBundleVersion" : "4201"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6851072000,
+    "size" : 651204,
+    "uuid" : "0975afba-c46b-364c-bd84-a75daa9e455a",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6854795264,
+    "size" : 246944,
+    "uuid" : "548c45c8-9733-3f0d-8ef4-c06df1df2ad0",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6855098368,
+    "size" : 33776,
+    "uuid" : "4dbaf982-1576-3ffc-86be-03a9d2c96be5",
+    "path" : "\/usr\/lib\/system\/libsystem_platform.dylib",
+    "name" : "libsystem_platform.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6914560000,
+    "CFBundleShortVersionString" : "7.0",
+    "CFBundleIdentifier" : "com.apple.security",
+    "size" : 4343424,
+    "uuid" : "6f4ea801-3def-3377-981b-325ff7a96f8a",
+    "path" : "\/System\/Library\/Frameworks\/Security.framework\/Versions\/A\/Security",
+    "name" : "Security",
+    "CFBundleVersion" : "61901.60.40"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6853242880,
+    "size" : 290400,
+    "uuid" : "a4b349e8-dd6f-3b71-84d9-34f3b4acd849",
+    "path" : "\/usr\/lib\/system\/libdispatch.dylib",
+    "name" : "libdispatch.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6855045120,
+    "size" : 51900,
+    "uuid" : "527c4ba0-91a5-378b-b3e2-d38269ca5a66",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  }
+],
+  "sharedCache" : {
+  "base" : 6849986560,
+  "size" : 5653544960,
+  "uuid" : "acb998b6-263c-3634-b0a8-ae8270a116c2"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=1.2G resident=0K(0%) swapped_out_or_unallocated=1.2G(100%)\nWritable regions: Total=314.8M written=481K(0%) resident=481K(0%) swapped_out=0K(0%) unallocated=314.4M(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nActivity Tracing                   256K        1 \nDispatch continuations            80.0M        1 \nKernel Alloc Once                   32K        1 \nMALLOC                           218.1M       27 \nMALLOC guard page                   96K        6 \nSTACK GUARD                       56.1M        4 \nStack                             9808K        4 \nVM_ALLOCATE                       6160K        7 \n__AUTH                            3018K      335 \n__AUTH_CONST                      52.6M      626 \n__CTF                               824        1 \n__DATA                            16.4M      599 \n__DATA_CONST                      25.5M      649 \n__DATA_DIRTY                      3712K      541 \n__FONT_DATA                        2352        1 \n__LINKEDIT                       598.0M       20 \n__OBJC_RO                         78.4M        1 \n__OBJC_RW                         2570K        1 \n__TEXT                           656.0M      665 \n__TPRO_CONST                       128K        2 \ndyld private memory                128K        1 \nmapped file                       32.7M        3 \npage table in kernel               481K        1 \nshared memory                       80K        4 \n===========                     =======  ======= \nTOTAL                              1.8G     3501 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+    "queue" : "com.apple.main-thread"
+  }
+},
+  "logWritingSignature" : "655a754aba578194039101f2b35b77126f19cceb",
+  "roots_installed" : 0,
+  "bug_type" : "309",
+  "trmStatus" : 10240,
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "63508950b3714d3622fc77f7",
+      "factorPackIds" : [
+        "6526e111d0c9ce2f459b54a8"
+      ],
+      "deploymentId" : 240000015
+    },
+    {
+      "rolloutId" : "64628732bf2f5257dedc8988",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000001
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}
+
+Model: Mac14,12, BootROM 13822.61.10, proc 10:6:4 processors, 16 GB, SMC 
+Graphics: Apple M2 Pro, Apple M2 Pro, Built-In
+Display: LG Ultra HD, 3840 x 2160 (2160p/4K UHD 1 - Ultra High Definition), Main, MirrorOff, Online
+Memory Module: LPDDR5, Hynix
+AirPort: spairport_wireless_card_type_wifi (0x14E4, 0x4388), wl0: Oct  3 2025 00:48:18 version 23.41.7.0.41.51.200 FWID 01-890baf8c
+IO80211_driverkit-1533.5 "IO80211_driverkit-1533.5" Nov 14 2025 18:26:34
+AirPort: 
+Bluetooth: Version (null), 0 services, 0 devices, 0 incoming serial ports
+Network Service: Wi-Fi, AirPort, en1
+Thunderbolt Bus: Mac mini, Apple Inc.
+Thunderbolt Bus: Mac mini, Apple Inc.
+Thunderbolt Bus: Mac mini, Apple Inc.
+Thunderbolt Bus: Mac mini, Apple Inc.
